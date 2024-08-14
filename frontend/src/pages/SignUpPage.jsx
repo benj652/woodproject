@@ -1,10 +1,30 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-
-const SignUp = () => {
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import useSignUp from '../hooks/useSignUp';
+const SignUpPage = () => {
+  const { signUp, loading } = useSignUp();
+  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const navigate = useNavigate();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const data = await signUp({
+      email,
+      username,
+      password,
+      confirmPassword,
+    });
+    console.log(data);
+    navigate('/');
+  };
   return (
     <div className="flex items-center justify-center flex-col h-[475px]">
-      <form className="space-y-5 items-center text-center bg-base-200/50 shadow-xl hover:shadow-2xl p-6 rounded-xl">
+      <form
+        className="space-y-5 items-center text-center bg-base-200/50 shadow-xl hover:shadow-2xl p-6 rounded-xl"
+        onSubmit={handleSubmit}
+      >
         <h1>Sign Up</h1>
         <label className="input input-bordered flex items-center gap-2">
           <svg
@@ -16,7 +36,13 @@ const SignUp = () => {
             <path d="M2.5 3A1.5 1.5 0 0 0 1 4.5v.793c.026.009.051.02.076.032L7.674 8.51c.206.1.446.1.652 0l6.598-3.185A.755.755 0 0 1 15 5.293V4.5A1.5 1.5 0 0 0 13.5 3h-11Z" />
             <path d="M15 6.954 8.978 9.86a2.25 2.25 0 0 1-1.956 0L1 6.954V11.5A1.5 1.5 0 0 0 2.5 13h11a1.5 1.5 0 0 0 1.5-1.5V6.954Z" />
           </svg>
-          <input type="text" className="grow" placeholder="Email" />
+          <input
+            type="text"
+            className="grow"
+            placeholder="Email"
+            onChange={(e) => setEmail(e.target.value)}
+            value={email}
+          />
         </label>
         <label className="input input-bordered flex items-center gap-2">
           <svg
@@ -27,7 +53,13 @@ const SignUp = () => {
           >
             <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z" />
           </svg>
-          <input type="text" className="grow" placeholder="Username" />
+          <input
+            type="text"
+            className="grow"
+            placeholder="Username"
+            onChange={(e) => setUsername(e.target.value)}
+            value={username}
+          />
         </label>
         <label className="input input-bordered flex items-center gap-2">
           <svg
@@ -42,7 +74,13 @@ const SignUp = () => {
               clipRule="evenodd"
             />
           </svg>
-          <input type="password" className="grow" placeholder="password" />
+          <input
+            type="password"
+            className="grow"
+            placeholder="Password"
+            onChange={(e) => setPassword(e.target.value)}
+            value={password}
+          />
         </label>
         <label className="input input-bordered flex items-center gap-2">
           <svg
@@ -57,11 +95,27 @@ const SignUp = () => {
               clipRule="evenodd"
             />
           </svg>
-          <input type="password" className="grow" placeholder="Confirm Password" />
+          <input
+            type="password"
+            className="grow"
+            placeholder="Confirm Password"
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            value={confirmPassword}
+          />
         </label>
-        <button className="btn btn-primary w-full" type="submit">
-          Submit
-        </button>
+        <div
+          className={`btn btn-primary w-full ${
+            loading ? 'opacity-30 cursor-not-allowed' : 'cursor-pointer'
+          }`}
+        >
+          {loading ? (
+            <span className="loading loading-spinner loading-lg"></span>
+          ) : (
+            <button className="h-full w-full" type="submit">
+              Submit
+            </button>
+          )}
+        </div>
         <Link to="/login" className="text-center hover:text-white hover:cursor-pointer">
           Already Have an Account? Login
         </Link>
@@ -70,4 +124,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default SignUpPage;

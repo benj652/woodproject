@@ -10,4 +10,3 @@ class User(database.Model):
     email = database.Column(database.String(345), unique=True, nullable=False)
     password = database.Column(database.Text, nullable=False)
     username = database.Column(database.String(80), unique=True, nullable=False)
-    cards = database.relationship('Card', back_populates='user', cascade='all, delete-orphan')
