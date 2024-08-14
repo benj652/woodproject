@@ -1,0 +1,1 @@
+from .protect_route import login_required
