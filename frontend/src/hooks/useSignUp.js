@@ -9,13 +9,16 @@ const useSignUp = () => {
     try {
       setLoading(true);
       if (!email || !username || !password || !confirmPassword) {
-        throw new Error('Missing Required Fields');
+        return 'missing required fields';
       }
       if (password.length < 8) {
-        throw new Error('Password must be at least 8 characters');
+        return 'password must be at least 8 characters';
       }
       if (password !== confirmPassword) {
-        throw new Error('Passwords do not match');
+        return 'passwords do not match';
+      }
+      if (!email.includes('@') || !email.includes('.')) {
+        return 'invalid email address';
       }
       const response = await httpClient.post('/api/auth/register', {
         email,

@@ -2,7 +2,7 @@ import React from 'react';
 
 const About = () => {
   return (
-    <div className="  w-screen p-10 overflow-hidden z-10 space-y-5">
+    <div className="  w-screen p-10 overflow-hidden z-10 space-y-5 bg-base-200/50 shadow-2xl">
       <h1 className="text-3xl text-center">About:</h1>
       <p>
         {'   '} Welcome to my Wood Classification website, where I celebrate the diversity and

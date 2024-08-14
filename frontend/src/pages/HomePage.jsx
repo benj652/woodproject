@@ -11,13 +11,15 @@ const HomePage = () => {
     <div className="flex flex-col items-center">
       <Hero />
       <div
-        className={`grid grid-cols-1  space-x-5  p-10 gap-10 w-screen overflow-hidden h-full items-center justify-center bg-base-200 z-0 ${
-          user ? 'md:grid-cols-2' : 'md:grid-cols-3 cursor-not-allowed opacity-30'
+        className={`grid grid-cols-1 py-10 px-5 gap-10 w-screen overflow-hidden h-full items-center justify-center bg-base-200/40 z-0  ${
+          user ? 'lg:grid-cols-2' : 'lg:grid-cols-3 cursor-not-allowed opacity-30'
         }`}
       >
         <FileInput />
-        {!user && <div className="text-center text-4xl w-full"> ⛔Requires Account</div>}
-        <PredictionStats />
+        {!user && <div className="text-center text-4xl w-full z-10"> ⛔Requires Account</div>}
+        <div className={`${!user && 'ml-[-225px] z-0'}`}>
+          <PredictionStats />
+        </div>
       </div>
       <About />
     </div>

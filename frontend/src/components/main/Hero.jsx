@@ -5,7 +5,7 @@ const Hero = () => {
   const { user } = useUserContext();
   return (
     <div
-      className="hero min-h-[300px]  w-screen overflow-hidden shadow-black shadow-2xl "
+      className="hero min-h-[300px]  w-screen overflow-hidden shadow-black shadow-xl "
       style={{
         backgroundImage: `url(${background})`,
       }}

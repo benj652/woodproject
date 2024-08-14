@@ -7,6 +7,7 @@ const SignUpPage = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [error, setError] = useState('');
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -17,7 +18,9 @@ const SignUpPage = () => {
       confirmPassword,
     });
     console.log(data);
-    navigate('/');
+    if (data.id) navigate('/');
+    if (data.response) setError(data.response.data.error);
+    else setError(data);
   };
   return (
     <div className="flex items-center justify-center flex-col h-[475px]">
@@ -103,6 +106,7 @@ const SignUpPage = () => {
             value={confirmPassword}
           />
         </label>
+        {error && <p className="text-red-500">{error}</p>}
         <div
           className={`btn btn-primary w-full ${
             loading ? 'opacity-30 cursor-not-allowed' : 'cursor-pointer'

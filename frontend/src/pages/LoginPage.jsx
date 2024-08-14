@@ -7,11 +7,13 @@ const LoginPage = () => {
   const [password, setPassword] = useState('');
   const { login, loading } = useLogin();
   const navigate = useNavigate();
+  const [error, setError] = useState('');
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = await login({ email, password });
-    console.log(data);
-    navigate('/');
+    if (data.id) navigate('/');
+    if (data.response) setError(data.response.data.error);
+    else setError(data);
   };
   return (
     <div className="flex items-center justify-center flex-col h-96">
@@ -58,6 +60,7 @@ const LoginPage = () => {
             value={password}
           />
         </label>
+        {error && <p className="text-red-500">{error}</p>}
         <div
           className={`btn btn-primary w-full ${
             loading ? 'opacity-30 cursor-not-allowed' : 'cursor-pointer'

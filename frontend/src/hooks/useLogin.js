@@ -9,12 +9,13 @@ const useLogin = () => {
     try {
       setLoading(true);
       if (!email || !password) {
-        throw new Error('Missing Required Fields');
+        return 'missing required fields';
       }
       const response = await httpClient.post('/api/auth/login', {
         email,
         password,
       });
+      console.log(response);
       const data = response.data;
       localStorage.setItem('user', JSON.stringify(data));
       setUser(data);
