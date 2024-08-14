@@ -3,18 +3,18 @@ from utils import get_prediction, transform_image
 
 
 TREE_LABELS = {
-    0: 'common beech',
-    1: 'common walnut',
-    2: 'chestnut',
-    3: 'austrian oak',
-    4: 'common alder',
-    5: 'manna ash',
-    6: 'european spruce',
-    7: 'ailanthus',
-    8: 'varnish tree',
-    9: 'black locust',
-    10: 'mediterranean cypress',
-    11: 'sycamore'
+    0: 'Common Beech',
+    1: 'Wommon Walnut',
+    2: 'Chestnut',
+    3: 'Austrian Oak',
+    4: 'Common Alder',
+    5: 'Manna Ash',
+    6: 'European Spruce',
+    7: 'Ailanthus',
+    8: 'Varnish Tree',
+    9: 'Black Locust',
+    10: 'Mediterranean Cypress',
+    11: 'Sycamore'
 }
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
