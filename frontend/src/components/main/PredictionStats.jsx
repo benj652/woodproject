@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { useFileContext } from '../../context/FileContext';
 import usePredict from '../../hooks/usePredict';
@@ -8,11 +7,11 @@ const PredictionStats = () => {
   const { preview, uploadedFile, prediction, clear } = useFileContext();
   const handlePredict = async () => {
     if (!loading) {
-      const data = await predict();
-      console.log(data);
+      await predict();
+      // console.log(data);
     }
   };
-  console.log(uploadedFile);
+  // console.log(uploadedFile);
   return (
     <div className="flex flex-col items-center space-y-2 bg-base-100 shadow-xl hover:shadow-2xl p-4 rounded-2xl min-h-[350px] min-w-[600px]">
       <div className="flex flex-col space-y-2 mt-10">

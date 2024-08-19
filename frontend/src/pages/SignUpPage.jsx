@@ -17,7 +17,7 @@ const SignUpPage = () => {
       password,
       confirmPassword,
     });
-    console.log(data);
+    // console.log(data);
     if (data.id) navigate('/');
     if (data.response) setError(data.response.data.error);
     else setError(data);

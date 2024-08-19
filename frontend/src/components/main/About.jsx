@@ -1,5 +1,3 @@
-import React from 'react';
-
 const About = () => {
   return (
     <div className="  w-screen p-10 overflow-hidden z-10 space-y-5 bg-base-200/50 shadow-2xl">
@@ -8,7 +6,7 @@ const About = () => {
         {'   '} Welcome to my Wood Classification website, where I celebrate the diversity and
         beauty of different wood species found around the world. My website specializes in
         accurately identifying and classifying various types of wood based on images you provide.
-        Whether you're a woodworking enthusiast, a forestry expert, or simply curious about the
+        Whether you&apos;re a woodworking enthusiast, a forestry expert, or simply curious about the
         natural wonders of wood, my app is here to assist you.
       </p>
       <p>

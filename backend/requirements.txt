@@ -10,3 +10,4 @@ flask-session
 redis
 uuid
 datetime
+gunicorn

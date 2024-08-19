@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import descriptions from '../../assets/descriptions.json';
 
+// eslint-disable-next-line react/prop-types
 const TreeInfoComponent = ({ id }) => {
   const [treeInfo, setTreeInfo] = useState(null);
 
